@@ -9,6 +9,8 @@ public class MoveQ : MonoBehaviour
     public Rigidbody2D RigidBody2D;
     public KeyCode upKey;
     public KeyCode downKey;
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +25,15 @@ public class MoveQ : MonoBehaviour
     {
 
 
-        if (Input.GetKey(upKey))
+        if (Input.GetKey(upKey) && transform.position.y < 5)
         {
-            RigidBody2D.velocity = Vector2.up;
+            RigidBody2D.velocity = Vector2.up * speed; 
         }
-        else if (Input.GetKey(downKey))
+        else if (Input.GetKey(downKey) && transform.position.y > - 5)
         {
-            RigidBody2D.velocity = Vector2.down;
+            RigidBody2D.velocity = Vector2.down * speed;
         }
+
         else
         {
             RigidBody2D.velocity = Vector2.zero;
